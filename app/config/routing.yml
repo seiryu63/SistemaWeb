@@ -1,0 +1,5 @@
+casamunozempresa:
+    resource: "@casamunozempresaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+

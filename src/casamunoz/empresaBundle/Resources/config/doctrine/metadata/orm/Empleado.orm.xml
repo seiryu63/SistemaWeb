@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Empleado" table="empleado">
+    <indexes>
+      <index name="IDX_D9D9BF52BDD5F5BC" columns="suc_id"/>
+      <index name="IDX_D9D9BF52C3C6F69F" columns="car_id"/>
+      <index name="IDX_D9D9BF526BF9042" columns="cub_id"/>
+      <index name="IDX_D9D9BF52B304206A" columns="per_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaInicio" type="date" column="fecha_inicio" nullable="false"/>
+    <field name="fechaFinal" type="date" column="fecha_final" nullable="true"/>
+    <field name="salario" type="decimal" column="salario" precision="8" scale="2" nullable="false"/>
+    <field name="disponibilidad" type="boolean" column="disponibilidad" nullable="false"/>
+    <many-to-one field="per" target-entity="Persona">
+      <join-columns>
+        <join-column name="per_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cub" target-entity="Cubiculo">
+      <join-columns>
+        <join-column name="cub_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="car" target-entity="CargoEmpleado">
+      <join-columns>
+        <join-column name="car_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="suc" target-entity="Sucursal">
+      <join-columns>
+        <join-column name="suc_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

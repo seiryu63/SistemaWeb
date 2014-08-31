@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Factura" table="factura">
+    <indexes>
+      <index name="IDX_F9EBA0097A663008" columns="emp_id"/>
+      <index name="IDX_F9EBA009476C47F6" columns="tip_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaFactura" type="date" column="fecha_factura" nullable="false"/>
+    <field name="montoTotal" type="decimal" column="monto_total" precision="8" scale="2" nullable="false"/>
+    <many-to-one field="tip" target-entity="TipoPago">
+      <join-columns>
+        <join-column name="tip_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="emp" target-entity="Empleado">
+      <join-columns>
+        <join-column name="emp_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

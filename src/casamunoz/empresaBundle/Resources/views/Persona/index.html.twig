@@ -1,0 +1,55 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Persona list</h1>
+
+    <table class="records_list">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Primernombre</th>
+                <th>Segundonombre</th>
+                <th>Primerapellido</th>
+                <th>Segundoapellido</th>
+                <th>Direccion</th>
+                <th>Dui</th>
+                <th>Sexo</th>
+                <th>Fechanac</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td><a href="{{ path('persona_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>{{ entity.primerNombre }}</td>
+                <td>{{ entity.segundoNombre }}</td>
+                <td>{{ entity.primerApellido }}</td>
+                <td>{{ entity.segundoApellido }}</td>
+                <td>{{ entity.direccion }}</td>
+                <td>{{ entity.dui }}</td>
+                <td>{{ entity.sexo }}</td>
+                <td>{% if entity.fechaNac %}{{ entity.fechaNac|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('persona_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('persona_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('persona_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

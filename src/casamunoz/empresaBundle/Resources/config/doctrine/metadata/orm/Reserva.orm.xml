@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Reserva" table="reserva">
+    <indexes>
+      <index name="IDX_188D2E3BBC4EE2B0" columns="cli_id"/>
+      <index name="IDX_188D2E3B5BF91936" columns="jor_id"/>
+      <index name="IDX_188D2E3B7A663008" columns="emp_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="fechaReserva" type="date" column="fecha_reserva" nullable="false"/>
+    <field name="estadoReserva" type="boolean" column="estado_reserva" nullable="false"/>
+    <many-to-one field="emp" target-entity="Empleado">
+      <join-columns>
+        <join-column name="emp_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="jor" target-entity="Jornada">
+      <join-columns>
+        <join-column name="jor_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="cli" target-entity="Cliente">
+      <join-columns>
+        <join-column name="cli_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

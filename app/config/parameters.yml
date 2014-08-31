@@ -1,0 +1,19 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_pgsql
+    database_host: localhost  
+    database_port: 5432
+    database_name: analisis
+    database_user: user_db
+    database_password: user
+    mailer_transport: smtp 
+    mailer_host: localhost
+    mailer_user: null
+    mailer_password: null
+    locale: en
+    secret: 4268229ff610103e167a3bdcd2041ec5aa
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true
+    database_path: null
+

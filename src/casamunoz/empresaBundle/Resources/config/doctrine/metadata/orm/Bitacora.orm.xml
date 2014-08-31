@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Bitacora" table="bitacora">
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <field name="usuario" type="string" column="usuario" length="15" nullable="true"/>
+    <field name="tabla" type="string" column="tabla" length="60" nullable="true"/>
+    <field name="operacion" type="string" column="operacion" length="250" nullable="true"/>
+    <field name="fecha" type="date" column="fecha" nullable="true"/>
+    <field name="valorAnterior" type="string" column="valor_anterior" length="400" nullable="true"/>
+    <field name="valorActual" type="string" column="valor_actual" length="400" nullable="true"/>
+  </entity>
+</doctrine-mapping>

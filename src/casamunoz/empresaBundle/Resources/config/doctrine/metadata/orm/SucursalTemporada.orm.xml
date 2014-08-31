@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="SucursalTemporada" table="sucursal_temporada">
+    <indexes>
+      <index name="IDX_20C6AD26BDD5F5BC" columns="suc_id"/>
+      <index name="IDX_20C6AD2620EF25B5" columns="tem_id"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="SEQUENCE"/>
+    </id>
+    <many-to-one field="tem" target-entity="Temporada">
+      <join-columns>
+        <join-column name="tem_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="suc" target-entity="Sucursal">
+      <join-columns>
+        <join-column name="suc_id" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>
