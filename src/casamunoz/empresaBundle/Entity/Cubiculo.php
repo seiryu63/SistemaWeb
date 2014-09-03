@@ -123,4 +123,10 @@ class Cubiculo
     {
         return $this->cubiculoDisponible;
     }
+    
+     public function __toString() {
+     return $this->numeroCubiculo;
+    }
+    
+  
 }

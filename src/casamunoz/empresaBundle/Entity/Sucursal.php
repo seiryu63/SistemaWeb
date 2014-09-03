@@ -156,4 +156,9 @@ class Sucursal
     {
         return $this->mun;
     }
+    
+    public function __toString() {
+     return $this->nombreSucursal;
+    }
+    
 }

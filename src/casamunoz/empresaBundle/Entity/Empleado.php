@@ -285,4 +285,5 @@ class Empleado
     {
         return $this->per;
     }
+   
 }

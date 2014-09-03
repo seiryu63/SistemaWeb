@@ -1,0 +1,64 @@
+{# src/casamunoz/empresaBundle/Resources/views/menu.html.twig #}
+  {% block stylesheets %}
+        <link href="{{ asset('bundles/casamunozempresa/css/pro_drop_1.css') }}" rel="stylesheet" type="text/css" />
+  {% endblock %}
+  {% block javascripts %}       
+        <script type="text/javascript" src="{{ asset('bundles/js/menu/') }}" ></script>
+  {% endblock %}
+<span class="preload1"></span>
+<span class="preload2"></span>
+ 
+<ul id="nav">
+   <li class="top">
+   <a href="{{ path('_home') }}" class="top_link">
+   <span>Inicio</span>
+   </a>
+  
+   </li>
+    <li class="top">
+        <a href="{{ path('persona_new') }}" class="top_link">
+            <span class="down">Registro de personas</span></a>
+            <ul class="sub">
+                <li><a href="{{ path('empleado_new') }}">Empleado</a></li>
+                <li><a href="{{ path('cliente_new') }}">Cliente</a></li>
+            </ul>
+            
+    </li>
+    <li class="top">
+        <a href="{{ path('administracion_index') }}" class="top_link">
+            <span class="down">Registro Cliente</span> </a>
+            <ul class="sub">
+                <li><a href="{{ path('sucursal_new') }}">Agregar</a></li>
+            </ul>
+    </li>
+    <li class="top">
+        <a href="{{ path('departamento') }}" class="top_link">
+            <span class="down">Promociones</span> </a>
+          <ul class="sub">
+                <li><a href="{{ path('departamento_new') }}">Agregar</a></li>
+            </ul>
+    </li>
+    <li class="top">
+        <a href="{{ path('departamento') }}" class="top_link">
+            <span class="down">Nuestras Sucursales</span> </a>
+          <ul class="sub">
+                <li><a href="{{ path('departamento_new') }}">Agregar</a></li>
+            </ul>
+    </li>
+    <li class="top">
+        <a href="{{ path('departamento') }}" class="top_link">
+            <span class="down">Reservas</span> </a>
+          <ul class="sub">
+                <li><a href="{{ path('departamento_new') }}">Agregar</a></li>
+            </ul>
+    </li>
+    <li class="top">
+        <a href="{{ path('departamento') }}" class="top_link">
+            <span class="down">Inicio de Sesion</span> </a>
+          <ul class="sub">
+                <li><a href="{{ path('departamento_new') }}">Agregar</a></li>
+            </ul>
+    </li>
+</ul>
+
+

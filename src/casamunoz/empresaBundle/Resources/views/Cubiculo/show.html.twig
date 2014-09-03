@@ -1,0 +1,40 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Cubiculo</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Numerocubiculo</th>
+                <td>{{ entity.numeroCubiculo }}</td>
+            </tr>
+            <tr>
+                <th>Estadocubiculo</th>
+                <td>{{ entity.estadoCubiculo }}</td>
+            </tr>
+            <tr>
+                <th>Cubiculodisponible</th>
+                <td>{{ entity.cubiculoDisponible }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('cubiculo') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('cubiculo_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

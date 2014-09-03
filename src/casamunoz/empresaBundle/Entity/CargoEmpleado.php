@@ -93,4 +93,8 @@ class CargoEmpleado
     {
         return $this->descripcionCargo;
     }
+    
+    public function __toString() {
+     return $this->nombreCargo;
+    }
 }
