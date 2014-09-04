@@ -32,14 +32,14 @@ class Cubiculo
     /**
      * @var boolean
      *
-     * @ORM\Column(name="estado_cubiculo", type="boolean", nullable=false)
+     * @ORM\Column(name="estado_cubiculo", type="boolean", nullable=true)
      */
     private $estadoCubiculo;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="cubiculo_disponible", type="boolean", nullable=false)
+     * @ORM\Column(name="cubiculo_disponible", type="boolean", nullable=true)
      */
     private $cubiculoDisponible;
 
@@ -128,5 +128,5 @@ class Cubiculo
      return $this->numeroCubiculo;
     }
     
-  
+    
 }

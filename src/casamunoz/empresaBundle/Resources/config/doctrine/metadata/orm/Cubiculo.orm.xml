@@ -5,7 +5,7 @@
       <generator strategy="SEQUENCE"/>
     </id>
     <field name="numeroCubiculo" type="integer" column="numero_cubiculo" nullable="false"/>
-    <field name="estadoCubiculo" type="boolean" column="estado_cubiculo" nullable="false"/>
-    <field name="cubiculoDisponible" type="boolean" column="cubiculo_disponible" nullable="false"/>
+    <field name="estadoCubiculo" type="boolean" column="estado_cubiculo" nullable="true"/>
+    <field name="cubiculoDisponible" type="boolean" column="cubiculo_disponible" nullable="true"/>
   </entity>
 </doctrine-mapping>
