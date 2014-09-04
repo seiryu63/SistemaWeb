@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}SIG_SS{% endblock %}</title>
+        {% block stylesheets %}
+			<link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
+			<link href="{{ asset('css/sigav.css') }}" type="text/css" rel="stylesheet"/>
+			<!-- <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet"/> -->
+			<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+		{% endblock %}
+    </head>
+	
+    <body class="body-login">
+	
+        {% block body %} 
+			<div class="container text-center">
+				<p class="lead"> 
+					<div class="alert alert-danger">
+						<button type="button" class="close" data-dismiss="alert">&times;</button>
+						<strong> ERROR! </strong> El nombre de usuario o la contraseña son incorrectos. <br /> Favor Verificar
+					</div>
+					<br />
+					<a href="{{ path('_home') }}">
+						<button type="button" class="btn btn-danger"> Regresar </button>
+					</a>
+				 </p>
+			</div>
+		{% endblock %}
+		
+        {% block javascripts %}
+			<script language="JavaScript" src ="{{asset('js/jquery-2.1.0.min.js')}}"> </script>
+			<script language="JavaScript" src ="{{asset('bootstrap/js/bootstrap.min.js')}}"> </script>
+		{% endblock %}
+    </body>
+	
+</html>

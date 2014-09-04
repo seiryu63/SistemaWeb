@@ -125,7 +125,7 @@ class Cubiculo
     }
     
      public function __toString() {
-     return $this->numeroCubiculo;
+     return (string) $this->numeroCubiculo;
     }
     
     

@@ -1,13 +1,116 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <title>{% block title %}Sistema Web Para Reservaciones En Linea Casa Muñoz{% endblock %}</title>
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/casamunozempresa/css/estilos.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/casamunozempresa/imagenes/dtic-icono.png') }}" type="image/png" rel="Shortcut Icon" />
+ 
+        {% endblock %}
+ 
+        {% block javascripts %}            
+           <!-- <script type="text/javascript" src="{# asset('bundles/minsalsidpla/js/jquery-1.6.2.min.js') #}" ></script>-->
+        {% endblock %}
+    </head>                                      
+<body>
+        {% block header %}
+            <div class="centerTable">
+                <div class="table-responsive">
+                        <table class="table-borderless" width="0%">
+                                <tbody>
+                                        <tr class="text-center">
+                                                <td rowspan=2 width="20%">									
+                                                </td>
+                                                <td width="60%">
+                                                       <img src={{ asset('bundles/casamunozempresa/imagenes/encabezado.jpg') }} />
+                                                </td>
+                                                <td rowspan=2 width="25%">
+                                                        <p class="text-center"> 
+                                                                {{ app.session.get('usuario') }}
+                                                                <br />
+                                                                {{ app.session.get('nombre_rol') }}
+                                                        </p>
+                                                </td>
+                                        </tr>							
+                                </tbody>
+                        </table>
+                </div>
+            </div>	
+            <br />  
+            <div class="container">	
+                <span class="preload1"></span>
+                <span class="preload2"></span>
+ 
+            <ul id="nav">
+            <li class="top">
+            <a href="{{ path('_home') }}" class="top_link">
+            <span class="down">Inicio</span></a>
+          </li>
+          <li class="top">
+            <a href="{{ path('somos_index') }}" class="top_link">
+            <span class="down">Quienes Somos</span></a>
+          </li>
+             <li class="top">
+            <a href="{{ path('servi_index') }}" class="top_link">
+            <span class="down">Nuestros servicios</span> </a>
+        </li>
+        <li class="top">
+        <a href="{{ path('promociones_index') }}" class="top_link">
+            <span class="down">Nuestras Sucursales</span> </a>
+       </li
+        <li class="top">
+        <a href="{{ path('nuestras_index') }}" class="top_link">
+            <span class="down">Nuestras Sucursales</span> </a>
+       </li
+       <li class="top">
+        <a href="{{ path('acerca_index') }}" class="top_link">
+            <span class="down">Acerda De</span> </a>
+    </li>
+</ul>
+                 
+                    
+	             {% if app.session.get('rol_id') == 1 %}
+                            <li><a href="{{url('_home')}}">Inicio</a></li>
+			    <li><a href="{{url('casamunoz_empresa_Persona')}}">Registro</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_consultarEmpleado')}}">Empleados</a></li> 
+                            <li><a href="{{url('minsal_si_gminsal_sig_consultarUsuario')}}">Usuarios</a></li> 
+		     {% endif %}
+		     {% if app.session.get('rol_id') == 2 %} 
+                            <li><a href="{{url('_home')}}">Inicio</a></li>
+			    <li><a href={{url('minsal_si_gminsal_sig_perfil_tact')}}>Perfil</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_cum')}}">Mejor CUM de Estudiantes</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_pruebaCon')}}">Prueba de Conocimiento</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_plazas')}}">Remunerados y Ad-Honorem</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_aprobados')}}">Estudiantes Aprobados</a></li>
+                            <li><a href="{{url('minsal_si_gminsal_sig_distribucion')}}">Distribución Estudiantes</a></li>
+			    <li><a href="{{url('minsal_si_gminsal_sig_informefinal')}}">Informe final</a></li>					    
+		     {% endif %}    
+		     {% if app.session.get('rol_id') == 3 %} 
+                             <li><a href="{{url('_home')}}">Inicio</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_perfil_est')}}">Perfil</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_promPrueba')}}">Prueba de Conocimiento</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_conplazas')}}">Consolidado de Plazas</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_estudiantes')}}">Estudiantes Aptos para SS</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_rangoNotas')}}">Rango de Notas</a></li>
+			     <li><a href="{{url('minsal_si_gminsal_sig_montoTotal')}}">Monto Total de Plazas</a></li>				     
+		    {% endif %}
+		</ol>          
+            </div>                                 
+        {% endblock %}
+		<br />
+        
+        {% block body %} {% endblock %}            
+                            
+        <br />
+        <br />
+        {% block footer %} 			
+            <div class="container">
+                <ol class="breadcrumb text-center"> 
+                    
+                </ol>                      
+            </div>			
+        {% endblock %}   
+      
     </body>
 </html>
