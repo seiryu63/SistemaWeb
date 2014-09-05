@@ -13,7 +13,7 @@ use casamunoz\empresaBundle\Form\UsuarioType;
 /**
  * Usuario controller.
  *
- * @Route("/usuario")
+ * @Route("/admin/usuario")
  */
 class UsuarioController extends Controller
 {
@@ -21,7 +21,7 @@ class UsuarioController extends Controller
     /**
      * Lists all Usuario entities.
      *
-     * @Route("/", name="usuario")
+     * @Route("/", name="admin_usuario")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +38,7 @@ class UsuarioController extends Controller
     /**
      * Creates a new Usuario entity.
      *
-     * @Route("/", name="usuario_create")
+     * @Route("/", name="admin_usuario_create")
      * @Method("POST")
      * @Template("casamunozempresaBundle:Usuario:new.html.twig")
      */
@@ -49,11 +49,12 @@ class UsuarioController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
+            $this->setSecurePassword($entity);
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usuario_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_usuario_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -72,7 +73,7 @@ class UsuarioController extends Controller
     private function createCreateForm(Usuario $entity)
     {
         $form = $this->createForm(new UsuarioType(), $entity, array(
-            'action' => $this->generateUrl('usuario_create'),
+            'action' => $this->generateUrl('admin_usuario_create'),
             'method' => 'POST',
         ));
 
@@ -84,7 +85,7 @@ class UsuarioController extends Controller
     /**
      * Displays a form to create a new Usuario entity.
      *
-     * @Route("/new", name="usuario_new")
+     * @Route("/new", name="admin_usuario_new")
      * @Method("GET")
      * @Template()
      */
@@ -102,7 +103,7 @@ class UsuarioController extends Controller
     /**
      * Finds and displays a Usuario entity.
      *
-     * @Route("/{id}", name="usuario_show")
+     * @Route("/{id}", name="admin_usuario_show")
      * @Method("GET")
      * @Template()
      */
@@ -127,7 +128,7 @@ class UsuarioController extends Controller
     /**
      * Displays a form to edit an existing Usuario entity.
      *
-     * @Route("/{id}/edit", name="usuario_edit")
+     * @Route("/{id}/edit", name="admin_usuario_edit")
      * @Method("GET")
      * @Template()
      */
@@ -161,7 +162,7 @@ class UsuarioController extends Controller
     private function createEditForm(Usuario $entity)
     {
         $form = $this->createForm(new UsuarioType(), $entity, array(
-            'action' => $this->generateUrl('usuario_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_usuario_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +173,7 @@ class UsuarioController extends Controller
     /**
      * Edits an existing Usuario entity.
      *
-     * @Route("/{id}", name="usuario_update")
+     * @Route("/{id}", name="admin_usuario_update")
      * @Method("PUT")
      * @Template("casamunozempresaBundle:Usuario:edit.html.twig")
      */
@@ -188,12 +189,14 @@ class UsuarioController extends Controller
 
         $deleteForm = $this->createDeleteForm($id);
         $editForm = $this->createEditForm($entity);
+        $current_pass = $entity->getPassword();
         $editForm->handleRequest($request);
-
+        
+        
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('usuario_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_usuario_edit', array('id' => $id)));
         }
 
         return array(
@@ -205,7 +208,7 @@ class UsuarioController extends Controller
     /**
      * Deletes a Usuario entity.
      *
-     * @Route("/{id}", name="usuario_delete")
+     * @Route("/{id}", name="admin_usuario_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -225,7 +228,7 @@ class UsuarioController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('usuario'));
+        return $this->redirect($this->generateUrl('admin_usuario'));
     }
 
     /**
@@ -238,10 +241,18 @@ class UsuarioController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('usuario_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('admin_usuario_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
+    
+    private function setSecurePassword(&$entity) {
+        $entity->setSalt(md5(time()));
+        $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
+        $password = $encoder->encodePassword($entity->getPassword(), $entity->getSalt());
+        $entity->setPassword($password);
+}
+    
 }

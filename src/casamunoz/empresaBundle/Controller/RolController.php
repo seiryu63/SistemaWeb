@@ -13,7 +13,7 @@ use casamunoz\empresaBundle\Form\RolType;
 /**
  * Rol controller.
  *
- * @Route("/rol")
+ * @Route("/admin/rol")
  */
 class RolController extends Controller
 {
@@ -21,7 +21,7 @@ class RolController extends Controller
     /**
      * Lists all Rol entities.
      *
-     * @Route("/", name="rol")
+     * @Route("/", name="admin_rol")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +38,7 @@ class RolController extends Controller
     /**
      * Creates a new Rol entity.
      *
-     * @Route("/", name="rol_create")
+     * @Route("/", name="admin_rol_create")
      * @Method("POST")
      * @Template("casamunozempresaBundle:Rol:new.html.twig")
      */
@@ -53,7 +53,7 @@ class RolController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('rol_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('admin_rol_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -72,7 +72,7 @@ class RolController extends Controller
     private function createCreateForm(Rol $entity)
     {
         $form = $this->createForm(new RolType(), $entity, array(
-            'action' => $this->generateUrl('rol_create'),
+            'action' => $this->generateUrl('admin_rol_create'),
             'method' => 'POST',
         ));
 
@@ -84,7 +84,7 @@ class RolController extends Controller
     /**
      * Displays a form to create a new Rol entity.
      *
-     * @Route("/new", name="rol_new")
+     * @Route("/new", name="admin_rol_new")
      * @Method("GET")
      * @Template()
      */
@@ -102,7 +102,7 @@ class RolController extends Controller
     /**
      * Finds and displays a Rol entity.
      *
-     * @Route("/{id}", name="rol_show")
+     * @Route("/{id}", name="admin_rol_show")
      * @Method("GET")
      * @Template()
      */
@@ -127,7 +127,7 @@ class RolController extends Controller
     /**
      * Displays a form to edit an existing Rol entity.
      *
-     * @Route("/{id}/edit", name="rol_edit")
+     * @Route("/{id}/edit", name="admin_rol_edit")
      * @Method("GET")
      * @Template()
      */
@@ -161,7 +161,7 @@ class RolController extends Controller
     private function createEditForm(Rol $entity)
     {
         $form = $this->createForm(new RolType(), $entity, array(
-            'action' => $this->generateUrl('rol_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('admin_rol_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -172,7 +172,7 @@ class RolController extends Controller
     /**
      * Edits an existing Rol entity.
      *
-     * @Route("/{id}", name="rol_update")
+     * @Route("/{id}", name="admin_rol_update")
      * @Method("PUT")
      * @Template("casamunozempresaBundle:Rol:edit.html.twig")
      */
@@ -193,7 +193,7 @@ class RolController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('rol_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('admin_rol_edit', array('id' => $id)));
         }
 
         return array(
@@ -205,7 +205,7 @@ class RolController extends Controller
     /**
      * Deletes a Rol entity.
      *
-     * @Route("/{id}", name="rol_delete")
+     * @Route("/{id}", name="admin_rol_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -225,7 +225,7 @@ class RolController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('rol'));
+        return $this->redirect($this->generateUrl('admin_rol'));
     }
 
     /**
@@ -238,12 +238,10 @@ class RolController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('rol_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('admin_rol_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
     }
-    
-   
 }

@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
         <title>{% block title %}Sistema Web Para Reservaciones En Linea Casa Muñoz{% endblock %}</title>
-        
+        {% form_theme form 'casamunozempresaBundle:Form:fields.html.twig' %}
         {% block stylesheets %}
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>     
         <link href="{{ asset('bundles/casamunozempresa/css/sigav.css') }}" type="text/css" rel="stylesheet" />

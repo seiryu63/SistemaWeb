@@ -24,7 +24,8 @@ class LogueoController extends Controller
     
      public function indexAction()
     {
-        return $this->render('casamunozempresaBundle:Logueo:index.html.twig');
+        return $this->render('casamunozempresaBundle:Logueo:index.html.twig', array('form' => $form->createView()));
+        
     }
-}
+ }
 

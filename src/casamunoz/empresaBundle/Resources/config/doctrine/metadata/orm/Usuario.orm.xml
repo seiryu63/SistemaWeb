@@ -11,7 +11,7 @@
     <field name="usuario" type="string" column="usuario" length="15" nullable="false"/>
     <field name="password" type="string" column="password" length="15" nullable="false"/>
     <field name="email" type="string" column="email" length="75" nullable="true"/>
-    <field name="habilitado" type="boolean" column="habilitado" nullable="false"/>
+    <field name="habilitado" type="boolean" column="habilitado" nullable="true"/>
     <many-to-one field="per" target-entity="Persona">
       <join-columns>
         <join-column name="per_id" referenced-column-name="id"/>

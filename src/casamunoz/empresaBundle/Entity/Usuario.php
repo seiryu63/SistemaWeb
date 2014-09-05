@@ -2,6 +2,7 @@
 
 namespace casamunoz\empresaBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="usuario", indexes={@ORM\Index(name="IDX_2265B05D4BAB96C", columns={"rol_id"}), @ORM\Index(name="IDX_2265B05DB304206A", columns={"per_id"})})
  * @ORM\Entity
  */
-class Usuario
+class Usuario implements UserInterface
 {
     /**
      * @var integer
@@ -20,35 +21,35 @@ class Usuario
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="usuario_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="usuario", type="string", length=15, nullable=false)
      */
-    private $usuario;
+    protected $usuario;
 
     /**
      * @var string
      *
      * @ORM\Column(name="password", type="string", length=15, nullable=false)
      */
-    private $password;
+    protected $password;
 
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=75, nullable=true)
      */
-    private $email;
+    protected $email;
 
     /**
      * @var boolean
      *
-     * @ORM\Column(name="habilitado", type="boolean", nullable=false)
+     * @ORM\Column(name="habilitado", type="boolean", nullable=true)
      */
-    private $habilitado;
+    protected $habilitado;
 
     /**
      * @var \Rol
@@ -58,7 +59,7 @@ class Usuario
      *   @ORM\JoinColumn(name="rol_id", referencedColumnName="id")
      * })
      */
-    private $rol;
+    protected $rol;
 
     /**
      * @var \Persona
@@ -70,6 +71,10 @@ class Usuario
      */
     private $per;
 
+    public function __construct()
+    {
+        $this->rol = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -219,4 +224,53 @@ class Usuario
     {
         return $this->per;
     }
+
+        /**
+     * Add rol
+     *
+     * @param casamunoz\empresaBundle\Entity\Rol $Rol
+     */
+    public function addRole(\casamunoz\empresaBundle\Entity\Rol $Rol)
+    {
+        $this->rol[] = $Rol;
+    }
+ 
+    
+ /**
+     * Get roles
+     *
+     * @return Doctrine\Common\Collections\Collection
+     */
+    public function getRoles()
+    {
+        return $this->rol->toArray(); //IMPORTANTE: el mecanismo de seguridad de Sf2 requiere ésto como un array
+    }
+    
+    /**
+     * Compares this user to another to determine if they are the same.
+     *
+     * @param UserInterface $user The user
+     * @return boolean True if equal, false othwerwise.
+     */
+    public function equals(UserInterface $user) {
+        return md5($this->getUsuario()) == md5($user->getUsuario());
+ 
+    }
+ 
+    /**
+     * Erases the user credentials.
+     */
+    
+    public function eraseCredentials() {
+        
+    }
+
+    public function getSalt() {
+        
+    }
+
+    public function getUsername() {
+        
+    }
+
 }

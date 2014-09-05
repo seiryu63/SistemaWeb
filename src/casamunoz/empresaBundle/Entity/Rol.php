@@ -2,6 +2,7 @@
 
 namespace casamunoz\empresaBundle\Entity;
 
+use Symfony\Component\Security\Core\Role\RoleInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -10,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="rol")
  * @ORM\Entity
  */
-class Rol
+class Rol implements RoleInterface
 {
     /**
      * @var integer
@@ -20,14 +21,14 @@ class Rol
      * @ORM\GeneratedValue(strategy="SEQUENCE")
      * @ORM\SequenceGenerator(sequenceName="rol_id_seq", allocationSize=1, initialValue=1)
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nombre_rol", type="string", length=50, nullable=false)
      */
-    private $nombreRol;
+    protected $nombreRol;
 
 
 
@@ -63,9 +64,13 @@ class Rol
     {
         return $this->nombreRol;
     }
-    
+   
+   public function getRole() {
+        return $this->getNombreRol();
+    }
+ 
     public function __toString() {
-   return $this->nombreRol;
-   }
+        return $this->getRole();
+    }
     
 }
