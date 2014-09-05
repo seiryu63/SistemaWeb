@@ -1,12 +1,11 @@
 {# src/casamunoz/empresaBundle/Resources/views/Persona/index.html.twig #}
-{% extends 'minsalacademicaAnBundle::base.html.twig' %}
- 
+{% extends '::base.html.twig' %}
 {% block titulo %}CRUD de Persona{% endblock %}
  
 {% block body -%}
     <h1>Persona list</h1>
 
-    <table class="records_list">
+    <table id="Listado_personas">
         <thead>
             <tr>
                 <th>Id</th>
@@ -47,12 +46,14 @@
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
+        <div id='pagerPersona' ></div>
+    <div id='resultado' ></div>
+    <ul>
         <li>
             <a href="{{ path('persona_new') }}">
-                Create a new entry
+                Ingresar una nueva persona
             </a>
         </li>
-    </ul>
+    </ul>  
+        
     {% endblock %}

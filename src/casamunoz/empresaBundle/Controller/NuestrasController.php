@@ -12,12 +12,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
       * @Route("/nuestras")
       */
 
-class SomosController extends Controller
+class NuestrasController extends Controller
 {
     
     /**
      * @Route("/", name="nuestras_index")
-     * @Template("casamunozempresaBundle:nuestras:index.html.twig")
+     * @Template("casamunozempresaBundle:Nuestras:index.html.twig")
      */
     
     public function indexAction()
@@ -25,7 +25,7 @@ class SomosController extends Controller
       
         
         
-        return $this->render('casamunozempresaBundle:Somos:index.html.twig');
+        return $this->render('casamunozempresaBundle:Nuestras:index.html.twig');
     }
 }
 
