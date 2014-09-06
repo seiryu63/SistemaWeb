@@ -19,7 +19,6 @@ class SecurityController extends Controller
      * Definimos las rutas para el login:
      * @Route("/login", name="login")
      * @Route("/login_check", name="login_check")
-     * @Template("casamunozempresaBundle:Security:login.html.twig")
      */
     public function loginAction()
     {
@@ -39,4 +38,3 @@ class SecurityController extends Controller
     }
 }
 ?>
-

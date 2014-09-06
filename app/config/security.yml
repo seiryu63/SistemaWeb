@@ -1,13 +1,14 @@
+# proyecto/app/config/security.yml
 security:
     encoders:
-        MDW\BlogBundle\Entity\User:
+        casamunoz\empresaBundle\Entity\FosUserUser:
             algorithm: sha512
             encode-as-base64: true
             iterations: 10
 
     providers:
         user_db:
-            entity: { class: casamunoz\empresaBundle\Entity\Usuario, property: username }
+            entity: { class: casamunoz\empresaBundle\Entity\FosUserUser, property: username }
 
     firewalls:
         dev:

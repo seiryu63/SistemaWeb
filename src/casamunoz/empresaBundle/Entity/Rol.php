@@ -1,8 +1,8 @@
 <?php
 
 namespace casamunoz\empresaBundle\Entity;
-
 use Symfony\Component\Security\Core\Role\RoleInterface;
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -19,21 +19,28 @@ class Rol implements RoleInterface
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="SEQUENCE")
-     * @ORM\SequenceGenerator(sequenceName="rol_id_seq", allocationSize=1, initialValue=1)
+     * @ORM\SequenceGenerator(sequenceName="rol_id_rol_seq", allocationSize=1, initialValue=1)
      */
-    protected $id;
+    private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nombre_rol", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nombre_rol", type="string", length=25, nullable=false)
      */
-    protected $nombreRol;
+    private $nombreRol;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="descripcion_rol", type="string", length=75, nullable=true)
+     */
+    private $descripcionRol;
 
 
 
     /**
-     * Get id
+     * Get idRol
      *
      * @return integer 
      */
@@ -64,13 +71,36 @@ class Rol implements RoleInterface
     {
         return $this->nombreRol;
     }
-   
-   public function getRole() {
-        return $this->getNombreRol();
+
+    /**
+     * Set descripcionRol
+     *
+     * @param string $descripcionRol
+     * @return Rol
+     */
+    public function setDescripcionRol($descripcionRol)
+    {
+        $this->descripcionRol = $descripcionRol;
+
+        return $this;
     }
- 
-    public function __toString() {
-        return $this->getRole();
+
+    /**
+     * Get descripcionRol
+     *
+     * @return string 
+     */
+    public function getDescripcionRol()
+    {
+        return $this->descripcionRol;
     }
     
+     public function __toString() {
+        return $this->nombreRol;
+    }
+
+    public function getRole() {
+        
+    }
+
 }

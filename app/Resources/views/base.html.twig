@@ -7,10 +7,10 @@
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>     
         <link href="{{ asset('bundles/casamunozempresa/css/sigav.css') }}" type="text/css" rel="stylesheet" />
         <!-- <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet"/> -->
-        <link href="{{ asset('bundles/casamunozempresa/imagenes/dtic-icono.png') }}" type="image/png" rel="Shortcut Icon" />
-        {% endblock %}
+         {% endblock %}
     </head>                                      
 <body>
+       <body>
         {% block header %}
             <div class="centerTable">
                 <div class="table-responsive">
@@ -20,7 +20,7 @@
                                                 <td rowspan=2 width="20%">									
                                                 </td>
                                                 <td width="60%">
-                                                       <img src={{ asset('bundles/casamunozempresa/imagenes/encabezado.jpg') }} />
+                                                        <img src={{ asset('bundles/casamunozempresa/imagenes/encabezado.jpg') }} />
                                                 </td>
                                                 <td rowspan=2 width="25%">
                                                         <p class="text-center"> 
@@ -35,48 +35,14 @@
                 </div>
             </div>	
             <br />  
-            <div class="container">	
-            <ol class="breadcrumb text-center">     
- 
-            <li class="top">
-            <a href="{{ path('_home') }}" class="top_link">
-            <span class="down">Inicio</span></a>
-          </li>
-          <li class="top">
-            <a href="{{ path('somos_index') }}" class="top_link">
-            <span class="down">Quienes Somos</span></a>
-          </li>
-             <li class="top">
-            <a href="{{ path('servi_index') }}" class="top_link">
-            <span class="down">Nuestros servicios</span> </a>
-        </li>
-        <li class="top">
-        <a href="{{ path('promociones_index') }}" class="top_link">
-            <span class="down">Promociones</span> </a>
-        </li>
-        <li class="top">
-        <a href="{{ path('nuestras_index') }}" class="top_link">
-            <span class="down">Nuestras Sucursales</span> </a>
-        </li>
-       <li class="top">
-        <a href="{{ path('acerca_index') }}" class="top_link">
-            <span class="down">Acerca De</span> </a>
-    </li>  
-    <li class="top">
-        <a href="{{ path('login') }}" class="top_link">
-            <span class="down">Login</span> </a>
-    </li>                 
-       
-
-  
-          
-    
-	             {% if app.session.get('rol_id') == 1 %}
-                            <li><a href="{{url('_home')}}">Inicio</a></li>
-			    
+            <div class="container">	   
+                <ol class="breadcrumb text-center">   
+	             {% if app.session.get('id_rol') == 1 %}
+			    <li><a href="{{url('_home')}}">Inicio</a></li>
+			    <li><a href="{{url('somos_index')}}">Quienes Somos</a></li> 
+                            <li><a href="{{url('logueo_index')}}">Inicio Sesion</a></li> 
 		     {% endif %}
-		     {% if app.session.get('rol_id') == 2 %} 
-                            <li><a href="{{url('_home')}}">Inicio</a></li>
+		     {% if app.session.get('id_rol') == 2 %} 
 			    <li><a href={{url('minsal_si_gminsal_sig_perfil_tact')}}>Perfil</a></li>
 			    <li><a href="{{url('minsal_si_gminsal_sig_cum')}}">Mejor CUM de Estudiantes</a></li>
 			    <li><a href="{{url('minsal_si_gminsal_sig_pruebaCon')}}">Prueba de Conocimiento</a></li>
@@ -85,8 +51,7 @@
                             <li><a href="{{url('minsal_si_gminsal_sig_distribucion')}}">Distribución Estudiantes</a></li>
 			    <li><a href="{{url('minsal_si_gminsal_sig_informefinal')}}">Informe final</a></li>					    
 		     {% endif %}    
-		     {% if app.session.get('rol_id') == 3 %} 
-                             <li><a href="{{url('_home')}}">Inicio</a></li>
+		     {% if app.session.get('id_rol') == 3 %} 
 			     <li><a href="{{url('minsal_si_gminsal_sig_perfil_est')}}">Perfil</a></li>
 			     <li><a href="{{url('minsal_si_gminsal_sig_promPrueba')}}">Prueba de Conocimiento</a></li>
 			     <li><a href="{{url('minsal_si_gminsal_sig_conplazas')}}">Consolidado de Plazas</a></li>
@@ -106,17 +71,10 @@
         {% block footer %} 			
             <div class="container">
                 <ol class="breadcrumb text-center"> 
-                      <li><a href="{{url('_home')}}">Cerrar Sesión</a></li>  
-                      <li><a href="#">Ayuda</a></li> 
-                      <div id="divpie">Copyright (C) 2014 Casa Muñoz, Sistema Web</div>
-            </div>
+                    <li><a href="{{url('_home')}}">Cerrar Sesión</a></li>  
+                    <li><a href="#">Ayuda</a></li> 
                 </ol>                      
             </div>			
         {% endblock %}   
-      {% block javascripts %}
-            <script language="JavaScript" src ="{{asset('bootstrap/js/bootstrap.js')}}"> </script> 
-            <script language="JavaScript" src ="{{asset('bundles/casamunozempresa/js/jquery-2.1.0.min.js')}}"> </script>
-            <script language="JavaScript" src ="{{asset('bundles/casamunozempresa/js/password_checker.js')}}"> </script>
-        {% endblock %}
     </body>
 </html>

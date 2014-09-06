@@ -2,11 +2,13 @@
 
 namespace casamunoz\empresaBundle\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use \casamunoz\empresaBundle\Entity\Usuario;
+use casamunoz\empresaBundle\Entity\FosUserUser;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class LoginController extends Controller
 {
@@ -36,13 +38,13 @@ class LoginController extends Controller
 			//echo "<script languaje='javascript'>alert('OK')</script>";
 			/*$username=$form->get('user')->getData();
 			$password=$form->get('pass')->getData();*/
-			$usuario=$repository->getRepository('casamunozempresaBundle:Usuario')->findOneBy(array('usuario'=>$user->getUsuario(), 'password'=>$user->getPassword() ));
+			$usuario=$repository->getRepository('casamunozempresaBundle:FosUserUser')->findOneBy(array('username'=>$user->getUsername(), 'password'=>$user->getPassword() ));
 			if(count($usuario) > 0) {
 				$session->set('login_expirado', '');
 				$session->set('login', 1);
-				$session->set('nombre_usuario', $usuario->getId()->getPrimerNombre().' '.$usuario->getId()->getPrimerApellido());
+				$session->set('nombre_usuario', $usuario->getPer()->getPrimerNombre().' '.$usuario->getPer()->getPrimerApellido());
 				$session->set('id_rol', $usuario->getRol()->getRol());
-				$session->set('nombre_rol',$usuario->getId()->getNombreRol());
+				$session->set('nombre_rol',$usuario->getRol()->getNombreRol());
 				return $this->render('casamunozempresaBundle:Default:menu.html.twig');
                                 
 			}

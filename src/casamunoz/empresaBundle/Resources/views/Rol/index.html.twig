@@ -8,6 +8,7 @@
             <tr>
                 <th>Id</th>
                 <th>Nombrerol</th>
+                <th>Descripcionrol</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -16,6 +17,7 @@
             <tr>
                 <td><a href="{{ path('admin_rol_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
                 <td>{{ entity.nombreRol }}</td>
+                <td>{{ entity.descripcionRol }}</td>
                 <td>
                 <ul>
                     <li>

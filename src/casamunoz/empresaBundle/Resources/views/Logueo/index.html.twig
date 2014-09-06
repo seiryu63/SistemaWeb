@@ -1,18 +1,10 @@
-<!DOCTYPE html>
+{% extends '::base.html.twig' %}
+   <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-        <title>{% block title %}Sistema Web Para Reservaciones En Linea Casa Muñoz{% endblock %}</title>
-        {% form_theme form 'casamunozempresaBundle:Form:fields.html.twig' %}
-        {% block stylesheets %}
-        <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>     
-        <link href="{{ asset('bundles/casamunozempresa/css/sigav.css') }}" type="text/css" rel="stylesheet" />
-        <!-- <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet"/> -->
-        <link href="{{ asset('bundles/casamunozempresa/imagenes/dtic-icono.png') }}" type="image/png" rel="Shortcut Icon" />
-        {% endblock %}
-    </head> 
-   
-    <body class="body-login">
+  
+
+   {<body class="body-login">
+	
         {% block body %} 
             <div class="centerDiv">
                 <div class="container">    
@@ -37,10 +29,8 @@
                 </div>                
             </div>           
         {% endblock %}
-        {% block javascripts %}
-            <script language="JavaScript" src ="{{asset('bootstrap/js/bootstrap.js')}}"> </script> 
-            <script language="JavaScript" src ="{{asset('bundles/casamunozempresa/js/jquery-2.1.0.min.js')}}"> </script>
-            <script language="JavaScript" src ="{{asset('bundles/casamunozempresa/js/password_checker.js')}}"> </script>
-        {% endblock %}
-    </body>
-</html>
+     </body>
+     	
+</html>   
+        
+        
