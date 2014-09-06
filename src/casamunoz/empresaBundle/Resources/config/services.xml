@@ -6,11 +6,11 @@
 
     <!--
     <parameters>
-        <parameter key="casamunozempresa.example.class">casamunoz\empresaBundle\Example</parameter>
+        <parameter key="siblhmantenimiento.example.class">siblh\mantenimientoBundle\Example</parameter>
     </parameters>
 
     <services>
-        <service id="casamunozempresa.example" class="%casamunozempresa.example.class%">
+        <service id="siblhmantenimiento.example" class="%siblhmantenimiento.example.class%">
             <argument type="service" id="service_id" />
             <argument>plain_value</argument>
             <argument>%parameter_name%</argument>

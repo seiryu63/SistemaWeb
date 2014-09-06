@@ -1,14 +1,17 @@
-# proyecto/app/config/security.yml
 security:
     encoders:
-        casamunoz\empresaBundle\Entity\FosUserUser:
-            algorithm: sha512
-            encode-as-base64: true
-            iterations: 10
+        Symfony\Component\Security\Core\User\User: plaintext
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
-        user_db:
-            entity: { class: casamunoz\empresaBundle\Entity\FosUserUser, property: username }
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
 
     firewalls:
         dev:
@@ -16,19 +19,21 @@ security:
             security: false
 
         login:
-            pattern:  ^/admin/login$
+            pattern:  ^/demo/secured/login$
             security: false
 
         secured_area:
-            pattern:    ^/admin/
-#            http_basic:
-#                realm: "Introduzca Usuario y Contraseña"
+            pattern:    ^/demo/secured/
             form_login:
-                login_path: /admin/login
-                check_path: /admin/login_check
+                check_path: _security_check
+                login_path: _demo_login
             logout:
-                path: /admin/logout
-                target: /
+                path:   _demo_logout
+                target: _demo
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
 
     access_control:
-      - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/demo/secured/hello/admin/, roles: ROLE_ADMIN }
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

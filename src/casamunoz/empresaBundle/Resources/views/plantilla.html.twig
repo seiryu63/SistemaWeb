@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+
+        {% block stylesheets %}
+        <link href="{{ asset('bundles/casamunozempresa/css/estilos.css') }}" type="text/css" rel="stylesheet" />
+        <link href="{{ asset('bundles/jquery/jquery-ui-1.11.1.custom/jquery-ui.theme.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{asset('bundles/jquery/jquery.jqGrid-4.6.0/css/ui.jqgrid.css')}}" rel="stylesheet"  type="text/css" media="all"/>
+        {% endblock %}
+ 
+        {% block javascripts %}            
+        <script type="text/javascript" src="{{ asset('bundles/jquery/js/jquery-2.1.1.min.js') }}" ></script>
+        <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.6.0/js/i18n/grid.locale-es.js')}}"></script>
+        <script type="text/javascript" src="{{asset('bundles/jquery/jquery.jqGrid-4.6.0/js/jquery.jqGrid.min.js')}}" ></script>
+        {% endblock %}
+ 
+
+    {% block body -%}
+    <h1>ACERCA DE</h1>
+{% endblock %}
+    

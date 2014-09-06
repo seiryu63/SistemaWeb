@@ -5,13 +5,18 @@
         <title>{% block title %}Sistema Web Para Reservaciones En Linea Casa Muñoz{% endblock %}</title>
         {% block stylesheets %}
         <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>     
-        <link href="{{ asset('bundles/casamunozempresa/css/sigav.css') }}" type="text/css" rel="stylesheet" />
-        <!-- <link href="{{ asset('bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet"/> -->
+        
+        <link href="{{ asset('bundles/casamunozempresa/estilos.css') }}" rel="stylesheet" type="text/css" />
+       
          {% endblock %}
+          {% block javascripts %}       
+          <script type="text/javascript" src="{{ asset('bundles/casamunozempresa/stuHover.js') }}" ></script>
+          {% endblock %}
     </head>                                      
 <body>
-       <body>
         {% block header %}
+            <span class="preload1"></span>
+            <span class="preload2"></span>
             <div class="centerTable">
                 <div class="table-responsive">
                         <table class="table-borderless" width="0%">
@@ -35,29 +40,52 @@
                 </div>
             </div>	
             <br />  
-            <div class="container">	   
-                <ol class="breadcrumb text-center">   
+           <span class="preload1"></span>
+           <span class="preload2"></span> 
+           <ul id="nav">
+           <li class="top">
+           <a href="{{ path('_home') }}" class="top_link">
+           <span class="down">Inicio</span></a>
+           </li>
+           <li class="top">
+            <a href="{{ path('somos_index') }}" class="top_link">
+            <span class="down">Asignatura</span> </a>
+           </li>
+           <li class="top">
+            <a href="{{ path('servi_index') }}" class="top_link">
+            <span class="down">Asignatura</span> </a>
+           </li>
+           <li class="top">
+            <a href="{{ path('promociones_index') }}" class="top_link">
+            <span class="down">Promociones</span> </a>
+            </li>
+            <li class="top">
+            <a href="{{ path('nuestras_index') }}" class="top_link">
+            <span class="down">Sucursales</span> </a>
+            </li>
+            <li class="top">
+            <a href="{{ path('acerca_index') }}" class="top_link">
+            <span class="down">Acerca de</span> </a>
+            </li>
+           <li class="top">
+           <a href="{{ path('persona') }}" class="top_link">
+           <span class="down">Registro de Empleados</span> </a>
+           <ul class="sub">
+           <li><a href="{{ path('persona_new') }}">Registro de Clientes</a></li>
+        </ul>
+    </li>
+</ul>
+
 	             {% if app.session.get('id_rol') == 1 %}
 			    <li><a href="{{url('_home')}}">Inicio</a></li>
 			    <li><a href="{{url('somos_index')}}">Quienes Somos</a></li> 
-                            <li><a href="{{url('logueo_index')}}">Inicio Sesion</a></li> 
+                          
 		     {% endif %}
 		     {% if app.session.get('id_rol') == 2 %} 
-			    <li><a href={{url('minsal_si_gminsal_sig_perfil_tact')}}>Perfil</a></li>
-			    <li><a href="{{url('minsal_si_gminsal_sig_cum')}}">Mejor CUM de Estudiantes</a></li>
-			    <li><a href="{{url('minsal_si_gminsal_sig_pruebaCon')}}">Prueba de Conocimiento</a></li>
-			    <li><a href="{{url('minsal_si_gminsal_sig_plazas')}}">Remunerados y Ad-Honorem</a></li>
-			    <li><a href="{{url('minsal_si_gminsal_sig_aprobados')}}">Estudiantes Aprobados</a></li>
-                            <li><a href="{{url('minsal_si_gminsal_sig_distribucion')}}">Distribución Estudiantes</a></li>
-			    <li><a href="{{url('minsal_si_gminsal_sig_informefinal')}}">Informe final</a></li>					    
+			    			    
 		     {% endif %}    
 		     {% if app.session.get('id_rol') == 3 %} 
-			     <li><a href="{{url('minsal_si_gminsal_sig_perfil_est')}}">Perfil</a></li>
-			     <li><a href="{{url('minsal_si_gminsal_sig_promPrueba')}}">Prueba de Conocimiento</a></li>
-			     <li><a href="{{url('minsal_si_gminsal_sig_conplazas')}}">Consolidado de Plazas</a></li>
-			     <li><a href="{{url('minsal_si_gminsal_sig_estudiantes')}}">Estudiantes Aptos para SS</a></li>
-			     <li><a href="{{url('minsal_si_gminsal_sig_rangoNotas')}}">Rango de Notas</a></li>
-			     <li><a href="{{url('minsal_si_gminsal_sig_montoTotal')}}">Monto Total de Plazas</a></li>				     
+			     			     
 		    {% endif %}
 		</ol>          
             </div>                                 
@@ -71,10 +99,10 @@
         {% block footer %} 			
             <div class="container">
                 <ol class="breadcrumb text-center"> 
-                    <li><a href="{{url('_home')}}">Cerrar Sesión</a></li>  
-                    <li><a href="#">Ayuda</a></li> 
+                    <div id="divpie">Copyright (C) 2014 Casa Muñoz, Sistema de reserva web</div>
                 </ol>                      
             </div>			
         {% endblock %}   
+        
     </body>
 </html>

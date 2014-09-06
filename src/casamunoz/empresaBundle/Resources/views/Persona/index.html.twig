@@ -1,11 +1,14 @@
-{# src/casamunoz/empresaBundle/Resources/views/Persona/index.html.twig #}
-{% extends '::base.html.twig' %}
+{% extends 'casamunozempresaBundle::plantilla.html.twig' %}
 {% block titulo %}CRUD de Persona{% endblock %}
- 
+{% block javascripts %}
+    {{parent()}}
+    <script type="text/javascript" src="{{ asset('bundles/casamunozempresa/js/Persona/index.js') }}" ></script>
+{% endblock %}
+
 {% block body -%}
     <h1>Persona list</h1>
 
-    <table id="Listado_personas">
+    <table class="listado_personas">
         <thead>
             <tr>
                 <th>Id</th>
@@ -17,7 +20,8 @@
                 <th>Dui</th>
                 <th>Sexo</th>
                 <th>Fechanac</th>
-                <th>Actions</th>
+               
+                
             </tr>
         </thead>
         <tbody>
@@ -32,28 +36,17 @@
                 <td>{{ entity.dui }}</td>
                 <td>{{ entity.sexo }}</td>
                 <td>{% if entity.fechaNac %}{{ entity.fechaNac|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('persona_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('persona_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
+               
             </tr>
         {% endfor %}
         </tbody>
     </table>
-        <div id='pagerPersona' ></div>
-    <div id='resultado' ></div>
-    <ul>
+
+        <ul>
         <li>
             <a href="{{ path('persona_new') }}">
-                Ingresar una nueva persona
+                Create a new entry
             </a>
         </li>
-    </ul>  
-        
+    </ul>
     {% endblock %}

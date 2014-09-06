@@ -1,4 +1,5 @@
-{% extends '::base.html.twig' %}
+{% extends 'casamunozempresaBundle::plantilla.html.twig' %}
+{% block titulo %}CRUD de Persona{% endblock %}
 
 {% block body -%}
     <h1>Persona</h1>
@@ -46,8 +47,8 @@
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('persona') }}">
-            Back to the list
+        <a href="{{ path('cliente_new') }}">
+            Ir Paso 2/2
         </a>
     </li>
     <li>
@@ -55,6 +56,6 @@
             Edit
         </a>
     </li>
-    <li>{{ form(delete_form) }}</li>
+    
 </ul>
 {% endblock %}

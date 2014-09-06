@@ -45,17 +45,17 @@ class LoginController extends Controller
 				$session->set('nombre_usuario', $usuario->getPer()->getPrimerNombre().' '.$usuario->getPer()->getPrimerApellido());
 				$session->set('id_rol', $usuario->getRol()->getRol());
 				$session->set('nombre_rol',$usuario->getRol()->getNombreRol());
-				return $this->render('casamunozempresaBundle:Default:menu.html.twig');
+				return $this->render('casamunozempresaBundle:Index:menu.html.twig');
                                 
 			}
                         else
-                            return $this->render('casamunozempresaBundle:Default:error.html.twig');
+                            return $this->render('casamunozempresaBundle:Index:error.html.twig');
     
 			
 		}
 		else
 
-			return $this->render('casamunozempresaBundle:Default:index.html.twig', array('form' => $form->createView()));
+			return $this->render('casamunozempresaBundle:Index:index.html.twig', array('form' => $form->createView()));
     }
 	
    	

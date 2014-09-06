@@ -13,7 +13,7 @@ use casamunoz\empresaBundle\Form\FosUserUserType;
 /**
  * FosUserUser controller.
  *
- * @Route("/admin/fosuseruser")
+ * @Route("/fosuseruser")
  */
 class FosUserUserController extends Controller
 {
@@ -21,7 +21,7 @@ class FosUserUserController extends Controller
     /**
      * Lists all FosUserUser entities.
      *
-     * @Route("/", name="admin_fosuseruser")
+     * @Route("/", name="fosuseruser")
      * @Method("GET")
      * @Template()
      */
@@ -38,7 +38,7 @@ class FosUserUserController extends Controller
     /**
      * Creates a new FosUserUser entity.
      *
-     * @Route("/", name="admin_fosuseruser_create")
+     * @Route("/", name="fosuseruser_create")
      * @Method("POST")
      * @Template("casamunozempresaBundle:FosUserUser:new.html.twig")
      */
@@ -49,12 +49,11 @@ class FosUserUserController extends Controller
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-          
             $em = $this->getDoctrine()->getManager();
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_fosuseruser_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('fosuseruser_show', array('id' => $entity->getId())));
         }
 
         return array(
@@ -73,7 +72,7 @@ class FosUserUserController extends Controller
     private function createCreateForm(FosUserUser $entity)
     {
         $form = $this->createForm(new FosUserUserType(), $entity, array(
-            'action' => $this->generateUrl('admin_fosuseruser_create'),
+            'action' => $this->generateUrl('fosuseruser_create'),
             'method' => 'POST',
         ));
 
@@ -85,7 +84,7 @@ class FosUserUserController extends Controller
     /**
      * Displays a form to create a new FosUserUser entity.
      *
-     * @Route("/new", name="admin_fosuseruser_new")
+     * @Route("/new", name="fosuseruser_new")
      * @Method("GET")
      * @Template()
      */
@@ -103,7 +102,7 @@ class FosUserUserController extends Controller
     /**
      * Finds and displays a FosUserUser entity.
      *
-     * @Route("/{id}", name="admin_fosuseruser_show")
+     * @Route("/{id}", name="fosuseruser_show")
      * @Method("GET")
      * @Template()
      */
@@ -128,7 +127,7 @@ class FosUserUserController extends Controller
     /**
      * Displays a form to edit an existing FosUserUser entity.
      *
-     * @Route("/{id}/edit", name="admin_fosuseruser_edit")
+     * @Route("/{id}/edit", name="fosuseruser_edit")
      * @Method("GET")
      * @Template()
      */
@@ -162,7 +161,7 @@ class FosUserUserController extends Controller
     private function createEditForm(FosUserUser $entity)
     {
         $form = $this->createForm(new FosUserUserType(), $entity, array(
-            'action' => $this->generateUrl('admin_fosuseruser_update', array('id' => $entity->getId())),
+            'action' => $this->generateUrl('fosuseruser_update', array('id' => $entity->getId())),
             'method' => 'PUT',
         ));
 
@@ -173,7 +172,7 @@ class FosUserUserController extends Controller
     /**
      * Edits an existing FosUserUser entity.
      *
-     * @Route("/{id}", name="admin_fosuseruser_update")
+     * @Route("/{id}", name="fosuseruser_update")
      * @Method("PUT")
      * @Template("casamunozempresaBundle:FosUserUser:edit.html.twig")
      */
@@ -194,7 +193,7 @@ class FosUserUserController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_fosuseruser_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('fosuseruser_edit', array('id' => $id)));
         }
 
         return array(
@@ -206,7 +205,7 @@ class FosUserUserController extends Controller
     /**
      * Deletes a FosUserUser entity.
      *
-     * @Route("/{id}", name="admin_fosuseruser_delete")
+     * @Route("/{id}", name="fosuseruser_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, $id)
@@ -226,7 +225,7 @@ class FosUserUserController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('admin_fosuseruser'));
+        return $this->redirect($this->generateUrl('fosuseruser'));
     }
 
     /**
@@ -239,17 +238,10 @@ class FosUserUserController extends Controller
     private function createDeleteForm($id)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('admin_fosuseruser_delete', array('id' => $id)))
+            ->setAction($this->generateUrl('fosuseruser_delete', array('id' => $id)))
             ->setMethod('DELETE')
             ->add('submit', 'submit', array('label' => 'Delete'))
             ->getForm()
         ;
-    }
-    
-    private function setSecurePassword(&$entity) {
-    $entity->setSalt(md5(time()));
-    $encoder = new \Symfony\Component\Security\Core\Encoder\MessageDigestPasswordEncoder('sha512', true, 10);
-    $password = $encoder->encodePassword($entity->getPassword());
-    $entity->setPassword($password);
     }
 }
