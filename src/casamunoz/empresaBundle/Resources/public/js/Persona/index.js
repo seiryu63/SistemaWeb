@@ -12,7 +12,7 @@ $(document).ready(function() {
             $('#resultado').load(href, function(){
                 $(this).dialog({
                     modal: true, 
-                    width: 600
+                    width: 200
                 }); 
  
             });
@@ -26,15 +26,15 @@ $(document).ready(function() {
         rowNum:10, 
         gridview: true, 
         colModel :[
-            {name:'Id',width:10},
-            {name:'primerNombre ',width:50},
-            {name:'segundoNombre', width:50},
-            {name:'primerApellido', width:50},
-            {name:'segundoApellido', width:50},
-            {name:'direccion', width:100},
-            {name:'dui', width:30},
-            {name:'sexo', width:10},
-            {name:'fechanac', width:100}
+            {name:'Id',width:15},
+            {name:'Primernombre',width:30},
+            {name:'Segundonombre', width:30},
+            {name:'Primerapellido', width:30},
+            {name:'Segundoapellido', width:30},
+            {name:'Direccion', width:100},
+            {name:'Dui', width:30},
+            {name:'Sexo', width:10},
+            {name:'Fechanac', width:0}
         ],
         loadComplete: function (){
             Enlace.cambiar();

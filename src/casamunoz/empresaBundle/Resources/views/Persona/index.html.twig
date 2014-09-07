@@ -8,7 +8,7 @@
 {% block body -%}
     <h1>Persona list</h1>
 
-    <table class="listado_personas">
+    <table id="listado_personas">
         <thead>
             <tr>
                 <th>Id</th>
@@ -35,7 +35,8 @@
                 <td>{{ entity.direccion }}</td>
                 <td>{{ entity.dui }}</td>
                 <td>{{ entity.sexo }}</td>
-                <td>{% if entity.fechaNac %}{{ entity.fechaNac|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaNac %}
+                {{ entity.fechaNac|date('Y-m-d') }}{% endif %}</td>
                
             </tr>
         {% endfor %}

@@ -1,11 +1,46 @@
-{% extends 'casamunozempresaBundle::plantilla.html.twig' %}
-
-{% block body -%}
-    <div class="container">
-        <div class="panel panel-primary">            
-            <div class="panel-body text-center" >
-                <h3>BIENVENIDO/A AL SISTEMA WEB DE CASA MUÑOZ</h3>                    
-            </div>
-        </div>
-    </div>     
-{% endblock %}  
+{% block stylesheets %}
+        <link href="{{ asset('bundles/casamunozempresa/pro_drop_1.css') }}" rel="stylesheet" type="text/css" />
+  {% endblock %}
+  {% block javascripts %}       
+        <script type="text/javascript" src="{{ asset('bundles/casamunozempresa/js/stuHover.js') }}" ></script>
+  {% endblock %}
+<span class="preload1"></span>
+<span class="preload2"></span>
+ 
+<ul id="nav">
+    <li class="top">
+        <a href="{{ path('_home') }}" class="top_link">
+            <span class="top">Inicio</span></a>
+    </li>      
+     <li class="top">
+        <a href="{{ path('somos_index') }}" class="top_link">
+            <span>Quienes Somos</span></a>
+    </li>    
+     <li class="top">
+        <a href="{{ path('servi_index') }}" class="top_link">
+            <span>Servicios</span></a>
+    </li>    
+     <li class="top">
+        <a href="{{ path('promociones_index') }}" class="top_link">
+            <span>Promociones</span></a>
+    </li>    
+    <li class="top">
+        <a href="{{ path('nuestras_index') }}" class="top_link">
+            <span>Sucursales</span></a>
+    </li>   
+    <li class="top">
+        <a href="{{ path('acerca_index') }}" class="top_link">
+            <span>Acerca de</span></a>
+    </li>   
+    
+</ul>
+        <ul id="nav">
+         <li class="top">
+        <a href="{{ path('persona_new') }}" class="top_link">
+            <span class="top">Registrarse</span></a>
+         </li>
+         <li class="top">
+        <a href="{{ path('sucursal_new') }}" class="top_link">
+            <span class="top">Registro de sucursal</span></a>
+         </li>
+         </ul>

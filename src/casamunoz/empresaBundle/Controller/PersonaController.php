@@ -75,8 +75,12 @@ class PersonaController extends Controller
             'action' => $this->generateUrl('persona_create'),
             'method' => 'POST',
         ));
-
-        $form->add('submit', 'submit', array('label' => 'Create'));
+         
+        $form->add('Ir a paso 2/2', 'submit');
+        $form->add('Regresar', 'submit');
+             
+        
+        $form->add('submit', 'submit', array('label' => 'Insertar'));
 
         return $form;
     }
@@ -98,6 +102,8 @@ class PersonaController extends Controller
             'form'   => $form->createView(),
         );
     }
+    
+    
 
     /**
      * Finds and displays a Persona entity.

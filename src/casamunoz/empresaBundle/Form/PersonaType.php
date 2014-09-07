@@ -33,6 +33,7 @@ class PersonaType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class' => 'casamunoz\empresaBundle\Entity\Persona'
+            
         ));
     }
 

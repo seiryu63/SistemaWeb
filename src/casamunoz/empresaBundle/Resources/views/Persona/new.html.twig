@@ -1,14 +1,14 @@
-{% extends '::base.html.twig' %}
+{% extends 'casamunozempresaBundle::plantilla.html.twig' %}
 
 {% block body -%}
-    <h1>Persona creation</h1>
+    <h1>Registro de Persona</h1>
 
-    {{ form(form) }}
+   <center> {{ form(form) }} </center>
 
         <ul class="record_actions">
     <li>
-        <a href="{{ path('persona') }}">
-            Regresar a la lista
+        <a href="{{ path('cliente_new') }}">
+            Ir paso 2/2
         </a>
     </li>
 </ul>
