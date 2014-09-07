@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new casamunoz\empresaBundle\casamunozempresaBundle(),
 
             new jQuery\jQueryBundle\jQueryjQueryBundle(),
+            
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
