@@ -11,4 +11,12 @@ casamunozempresa:
     resource: "@casamunozempresaBundle/Controller/"
     type:     annotation
     prefix:   /
+    
+    
+some_identifier: 
+    resource: "@casamunozempresaBundle/Controller/NaturalController.php" 
+    type: annotation  
+    
+    
+
  

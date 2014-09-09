@@ -76,10 +76,6 @@ class PersonaController extends Controller
             'method' => 'POST',
         ));
          
-        $form->add('Ir a paso 2/2', 'submit');
-        $form->add('Regresar', 'submit');
-             
-        
         $form->add('submit', 'submit', array('label' => 'Insertar'));
 
         return $form;

@@ -1,0 +1,17 @@
+{% extends 'casamunozempresaBundle::plantilla.html.twig' %}
+
+    <h1>Registro de Persona</h1>
+
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-12">
+            <form action="{{ path('create') }}" method="POST" novalidate>
+                {{ form_widget(form) }}
+                <button type="submit" class="btn btn-success">
+                    Enviar
+                </button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
